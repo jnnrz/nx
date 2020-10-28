@@ -1,5 +1,7 @@
 dependencies:
+  bootstrap: 5.0.0-alpha2_popper.js@1.16.1
   next: 10.0.0_d324f22c5075583a78a2d3c6ad05255b
+  popper.js: 1.16.1
   react: 17.0.1
   react-dom: 17.0.1_react@17.0.1
   sass: 1.27.0
@@ -1653,6 +1655,14 @@ packages:
     dev: false
     resolution:
       integrity: sha512-GkTiFpjFtUzU9CbMeJ5iazkCzGL3jrhzerzZIuqLABjbwRaFt33I9tUdSNryIptM+RxDet6OKm2WnLXzW51KsQ==
+  /bootstrap/5.0.0-alpha2_popper.js@1.16.1:
+    dependencies:
+      popper.js: 1.16.1
+    dev: false
+    peerDependencies:
+      popper.js: ^1.16.1
+    resolution:
+      integrity: sha512-ZhW32+m5ImJoEkDKn43QQk2KovpJFisV/7TAg/RCzDi+B8m7FUgLHWx1Auu0Jt3/DQXDYwp6iwsprP3ej4u3ng==
   /brace-expansion/1.1.11:
     dependencies:
       balanced-match: 1.0.0
@@ -4114,6 +4124,11 @@ packages:
       node: '>=6'
     resolution:
       integrity: sha512-7Wjy+9E3WwLOEL30D+m8TSTF7qJJUJLONBnwQp0518siuMxUQUbgZwssaFX+QKlZkjHZcw/IpZCt/H0srrntSg==
+  /popper.js/1.16.1:
+    deprecated: 'You can find the new Popper v2 at @popperjs/core, this package is dedicated to the legacy v1'
+    dev: false
+    resolution:
+      integrity: sha512-Wb4p1J4zyFTbM+u6WuO4XstYx4Ky9Cewe4DWrel7B0w6VVICvPwdOpotjzcf6eD8TsckVnIMNONQyPIUFOUbCQ==
   /posix-character-classes/0.1.1:
     dev: false
     engines:
@@ -5502,7 +5517,9 @@ packages:
     resolution:
       integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==
 specifiers:
+  bootstrap: ^5.0.0-alpha2
   next: 10.0.0
+  popper.js: ^1.16.1
   react: 17.0.1
   react-dom: 17.0.1
   sass: ^1.27.0
