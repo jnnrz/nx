@@ -8,6 +8,7 @@
     "start": "next start -p $PORT"
   },
   "dependencies": {
+    "@auth0/auth0-react": "^1.1.0",
     "bootstrap": "^5.0.0-alpha2",
     "next": "10.0.0",
     "popper.js": "^1.16.1",
