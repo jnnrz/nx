@@ -1,8 +1,8 @@
-import type { AppProps } from 'next/app';
+import type { AppProps } from "next/app";
 import { Auth0Provider } from "@auth0/auth0-react";
-import { ConnectedRouter } from 'connected-next-router';
-import { wrapper } from '../store';
-import '../styles/globals.scss';
+import { ConnectedRouter } from "connected-next-router";
+import { wrapper } from "../store";
+import "../styles/globals.scss";
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   return (

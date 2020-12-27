@@ -1,37 +1,41 @@
-import Router from 'next/router';
-import thunk from 'redux-thunk';
-import { ApplicationState } from './AppState';
-import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
-import { createRouterMiddleware, initialRouterState, routerReducer } from 'connected-next-router';
-import { createWrapper, HYDRATE, MakeStore } from 'next-redux-wrapper';
-import { format } from 'url';
+import Router from "next/router";
+import thunk from "redux-thunk";
+import { ApplicationState } from "./AppState";
+import { applyMiddleware, combineReducers, compose, createStore } from "redux";
+import {
+  createRouterMiddleware,
+  initialRouterState,
+  routerReducer,
+} from "connected-next-router";
+import { createWrapper, HYDRATE, MakeStore } from "next-redux-wrapper";
+import { format } from "url";
 
-import * as Counter from './Counter';
-import * as WeatherForecasts from './WeatherForecasts';
+import * as Counter from "./Counter";
+import * as WeatherForecasts from "./WeatherForecasts";
 
 // Whenever an action is dispatched, Redux will update each top-level application state property using
 // the reducer with the matching name. It's important that the names match exactly, and that the reducer
 // acts on the corresponding ApplicationState property type.
 const reducers = {
-    counter: Counter.reducer,
-    weatherForecasts: WeatherForecasts.reducer
+  counter: Counter.reducer,
+  weatherForecasts: WeatherForecasts.reducer,
 };
 
 // This type can be used as a hint on action creators so that its 'dispatch' and 'getState' params are
 // correctly typed to match your store.
 export interface AppThunkAction<TAction> {
-    (dispatch: (action: TAction) => void, getState: () => ApplicationState): void;
+  (dispatch: (action: TAction) => void, getState: () => ApplicationState): void;
 }
 
 const rootReducer = combineReducers({
   ...reducers,
-  router: routerReducer
+  router: routerReducer,
 });
 
 const reducer = (state, action) => {
   if (action.type == HYDRATE) {
     const nextState = { ...state, ...action.payload };
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       nextState.router = state.router;
     }
     return nextState;
@@ -53,7 +57,8 @@ export const initStore = (context): MakeStore => {
   }
 
   const enhancers = [];
-  const windowIfDefined = typeof window === 'undefined' ? null : window as any;
+  const windowIfDefined =
+    typeof window === "undefined" ? null : (window as any);
   if (windowIfDefined && windowIfDefined.__REDUX_DEVTOOLS_EXTENSION__) {
     enhancers.push(windowIfDefined.__REDUX_DEVTOOLS_EXTENSION__());
   }
@@ -61,7 +66,7 @@ export const initStore = (context): MakeStore => {
   return createStore(
     reducer,
     initialState,
-    compose(applyMiddleware(routerMiddleware, thunk),...enhancers)
+    compose(applyMiddleware(routerMiddleware, thunk), ...enhancers)
   );
 };
 
